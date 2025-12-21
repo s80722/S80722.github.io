@@ -13,6 +13,7 @@
             --color-medium-grey: #e9ecef;
             --color-dark-grey: #343a40;
             --color-accent: #0047AB; /* Deep Ocean Blue */
+            --color-accent-hover: #005fcf; /* Lighter Blue for Hover */
             --font-family-primary: 'Inter', sans-serif;
             --border-radius-lg: 16px;
             --spacing-unit: 20px;
@@ -94,6 +95,28 @@
             color: var(--color-accent);
         }
 
+        /* --- NEW: Lab Timer Button Styling --- */
+        .lab-timer-button {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-align: center;
+            transition: background-color 0.2s ease, transform 0.1s;
+            border: 2px solid transparent;
+        }
+
+        .lab-timer-button:hover {
+            background-color: var(--color-accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 71, 171, 0.4);
+        }
+
         /* --- Desktop Specific Card Sizing (Grid Span) --- */
 
         /* Row 1/2 */
@@ -122,7 +145,12 @@
         #card-tech-stack { grid-column: span 1; grid-row: span 2; }
 
         /* Row 3 */
-        #card-case-study { grid-column: span 2; grid-row: span 1; }
+        #card-case-study { 
+            grid-column: span 2; 
+            grid-row: span 1;
+            /* Added space-between to push the button down */
+            justify-content: space-between; 
+        }
         /* UPDATED LAYOUT: Hobby card now spans 1 column on the second half of row 3 */
         #card-hobby { grid-column: span 1; grid-row: span 1; } 
         /* NEW CARD: Reflection card spans 1 column and sits next to Hobby */
@@ -205,7 +233,7 @@
             <h2 class="card-title">Location</h2>
             <div class="card-content">
                 <p>Campus: UMT, Kuala Nerus</p>
-                <p>Current Time: <span id="current-time">[4:12 PM MYT]</span></p> 
+                <p>Current Time: <span id="current-time">[4:58 PM MYT]</span></p> 
                 <p style="font-size: 0.85rem; margin-top: 10px;">Situated by the South China Sea.</p>
             </div>
         </div>
@@ -222,12 +250,16 @@
         </div>
 
         <div id="card-case-study" class="grid-card">
-            <h2 class="card-title">Recent Project / Case Study</h2>
-            <div class="card-content">
-                <p style="font-weight: 600;">"Starch Gelatinization in Local Kuih"</p>
-                <p>Description: Analyzing texture profiles of Kuih Kasturi to optimize recipe structure and shelf-life.</p>
-                <p>Phase: Data Collection (DSC/Texture Analysis)</p>
+            <div> <h2 class="card-title">Recent Project / Case Study</h2>
+                <div class="card-content">
+                    <p style="font-weight: 600;">"Starch Gelatinization in Local Kuih"</p>
+                    <p>Description: Analyzing texture profiles of Kuih Kasturi to optimize recipe structure and shelf-life.</p>
+                    <p>Phase: Data Collection (DSC/Texture Analysis)</p>
+                </div>
             </div>
+            <a href="https://s80722.github.io/lab-timer-app/app.html" class="lab-timer-button" target="_blank" rel="noopener noreferrer">
+                Try My Lab Timer App
+            </a>
         </div>
         
         <div id="card-hobby" class="grid-card">
@@ -266,7 +298,7 @@
                 timeZone: 'Asia/Kuala_Lumpur' 
             };
             
-            // Get the time string (e.g., "4:12 PM")
+            // Get the time string (e.g., "4:58 PM")
             let timeString = now.toLocaleTimeString('en-US', options);
             
             // Format as "[H:MM PM/AM TZD]"
@@ -286,4 +318,4 @@
     </script>
 
 </body>
-</html
+</html>
